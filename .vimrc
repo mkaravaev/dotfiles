@@ -1,5 +1,6 @@
 "Plugins
 call plug#begin('~/.vim/plugged')
+
 Plug 'dag/vim-fish'
 Plug 'powerman/vim-plugin-ruscmd'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -9,7 +10,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets' 
+Plug 'honza/vim-snippets'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-rails'
@@ -24,12 +25,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'kien/ctrlp.vim'
 Plug 'slim-template/vim-slim'
 Plug 'w0ng/vim-hybrid'
+Plug 'morhetz/gruvbox'
 "JS
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
-"Angular
-Plug 'burnettk/vim-angular'
 "Code check
 Plug 'scrooloose/syntastic'
 Plug 'nanotech/jellybeans.vim'
@@ -47,6 +47,7 @@ nnoremap , <C-w>
 let g:ctrlp_map = '<D-t>'
 let g:move_key_modifier = 'C'
 nmap <C-F> :Ag<SPACE>
+
 "Insert mode mappings
 imap <C-e> <Esc>
 imap <C-c> <CR><Esc>O
@@ -59,6 +60,9 @@ let g:ctrlp_map = '<leader>t'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 map <leader>n :NERDTreeToggle<CR>
+
+"Command mode commands
+command JSONformat execute !python -m json.tool
 
 "NerdTree load on start
 "autocmd vimenter * NERDTree
@@ -75,7 +79,7 @@ set wmh=0
 "set guifont=Monaco:h18
 set guifont=mplus_1mn_regular:h15:b
 set background=dark
-colorscheme hybrid
+colorscheme gruvbox
 set autoread
 " set ctags
 set tags=./tags;

@@ -1,6 +1,6 @@
 #Load RVM
 rvm default
-
+set -g -x TERM xterm-256color
 # Path to your oh-my-fish.
 set -g OMF_PATH $HOME/.local/share/omf
 

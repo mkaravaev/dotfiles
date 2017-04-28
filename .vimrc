@@ -3,45 +3,45 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'dag/vim-fish'
 Plug 'powerman/vim-plugin-ruscmd'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'rking/ag.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'kchmck/vim-coffee-script'
 Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tpope/vim-vinegar'
+Plug 'gcmt/taboo.vim'
+Plug 'haya14busa/incsearch.vim' "search higlights
+
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-Plug 'bling/vim-airline'
-Plug 'tpope/vim-sensible'
+Plug 'garbas/vim-snipmate' "Make snippets
+Plug 'honza/vim-snippets' "?
+Plug 'bling/vim-airline' 
+Plug 'tpope/vim-sensible' "?
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
-Plug 'terryma/vim-expand-region'
-Plug 'tpope/vim-commentary'
-Plug 'jpo/vim-railscasts-theme'
-Plug 'tpope/vim-surround'
-Plug 'matze/vim-move'
-Plug 'Raimondi/delimitMate'
-Plug 'kien/ctrlp.vim'
-Plug 'slim-template/vim-slim'
-Plug 'w0ng/vim-hybrid'
-Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-commentary' "gcc gc make comments
+Plug 'tpope/vim-surround' "ys + selector + braces type
+Plug 'matze/vim-move' "move lines up and down
+Plug 'Raimondi/delimitMate' "auto completion for bracket
+Plug 'kien/ctrlp.vim' "Fuzzy search
+Plug 'flazz/vim-colorschemes'
 "JS
-Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
 "Code check
-Plug 'scrooloose/syntastic'
-Plug 'nanotech/jellybeans.vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
+"CTRLP options
+set wildignore+=*/_build,*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 "Key mappings
 let mapleader = "\<Space>"
-nnoremap <leader>B _o binding.pry<ESC>
 nnoremap <leader>w :w<CR>
 nnoremap , <C-w>
 let g:ctrlp_map = '<D-t>'
@@ -59,37 +59,52 @@ let g:ctrlp_map = '<leader>t'
 "Visual mode expand regions
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-map <leader>n :NERDTreeToggle<CR>
+map <leader>n :Vexplore<CR>
 
 "Command mode commands
 command JSONformat execute !python -m json.tool
 
-"NerdTree load on start
-"autocmd vimenter * NERDTree
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 "Settings
+set noeb vb t_vb= " Disable beep sound
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 set nu
 set wmh=0
-"set guifont=Monaco:h18
-set guifont=mplus_1mn_regular:h15:b
-set background=dark
-colorscheme gruvbox
+set guifont=Monaco:h18
+colorscheme base16-default-dark
 set autoread
 " set ctags
 set tags=./tags;
 set nowrap
-set nohlsearch
+set hlsearch
 set list
-set colorcolumn=80
 
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" netrw (like NerDTree) configs
+let g:netrw_banner = 0
+let g:netrw_browse_split = 2
+let g:netrw_altv = 1
+let g:netrw_winsize = -28
+let g:netrw_list_hide= netrw_gitignore#Hide().'.*\.swp$'
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
+
+" incsearch config
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay
+" :h g:incsearch#auto_nohlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#
+
 "The Silver Searcher
 if executable('ag')
   " Use ag over grep

@@ -1,6 +1,7 @@
 "Plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'dag/vim-fish'
 Plug 'powerman/vim-plugin-ruscmd'
 Plug 'rking/ag.vim'
@@ -9,15 +10,16 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tpope/vim-vinegar'
 Plug 'gcmt/taboo.vim'
 Plug 'haya14busa/incsearch.vim' "search higlights
+Plug 'ekalinin/Dockerfile.vim'
 
-Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate' "Make snippets
+Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets' "?
 Plug 'bling/vim-airline' 
 Plug 'tpope/vim-sensible' "?
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-commentary' "gcc gc make comments
+Plug 'tpope/vim-commentary' "make comments(usage: gcc gc)
 Plug 'tpope/vim-surround' "ys + selector + braces type
 Plug 'matze/vim-move' "move lines up and down
 Plug 'Raimondi/delimitMate' "auto completion for bracket
@@ -30,6 +32,13 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'neomake/neomake'
+"Run Neomake when I save any buffer
+  augroup localneomake
+    autocmd! BufWritePost * Neomake
+  augroup END
+  " Don't tell me to use smartquotes in markdown ok?
+  let g:neomake_markdown_enabled_makers = []
 
 call plug#end()
 "CTRLP options
@@ -80,6 +89,11 @@ set tags=./tags;
 set nowrap
 set hlsearch
 set list
+
+"cursor
+set cursorline
+set cursorcolumn
+set title
 
 " netrw (like NerDTree) configs
 let g:netrw_banner = 0

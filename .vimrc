@@ -1,6 +1,8 @@
 "Plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'aserebryakov/vim-todo-lists'
+Plug 'hashivim/vim-terraform'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'dag/vim-fish'
 Plug 'powerman/vim-plugin-ruscmd'
@@ -30,6 +32,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
 "Code check
 Plug 'elixir-lang/vim-elixir'
+Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'slashmili/alchemist.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'neomake/neomake'
@@ -95,6 +98,10 @@ set cursorline
 set cursorcolumn
 set title
 
+" terraform configurations
+let g:terraform_fmt_on_save = 1 "format before save
+autocmd FileType terraform setlocal commentstring=#%s "comment type for tf files
+
 " netrw (like NerDTree) configs
 let g:netrw_banner = 0
 let g:netrw_browse_split = 2
@@ -118,6 +125,10 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#
+
+"Higlighting for Elixir modules
+match Structure /assert_delivered_email/
+match Structure /refute_delivered_email/
 
 "The Silver Searcher
 if executable('ag')

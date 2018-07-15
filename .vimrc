@@ -1,6 +1,7 @@
 "Plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'digitaltoad/vim-pug'
 Plug 'aserebryakov/vim-todo-lists'
 Plug 'hashivim/vim-terraform'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

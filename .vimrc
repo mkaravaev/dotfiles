@@ -133,6 +133,9 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#
 
+"folding all except selected
+vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`< 
+
 "Higlighting for Elixir modules
 match Structure /assert_delivered_email/
 match Structure /refute_delivered_email/

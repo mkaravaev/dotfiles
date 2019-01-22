@@ -105,6 +105,9 @@ set cursorline
 set cursorcolumn
 set title
 
+" alchemist.vim configurations
+let g:alchemist_compile_basepath = '/Users/misa/work/acheron-users/'
+
 " terraform configurations
 let g:terraform_fmt_on_save = 1 "format before save
 autocmd FileType terraform setlocal commentstring=#%s "comment type for tf files

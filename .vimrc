@@ -5,21 +5,26 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'digitaltoad/vim-pug'
-Plug 'aserebryakov/vim-todo-lists'
 Plug 'hashivim/vim-terraform'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'dag/vim-fish'
 Plug 'powerman/vim-plugin-ruscmd'
 Plug 'rking/ag.vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tpope/vim-vinegar'
 Plug 'gcmt/taboo.vim'
 Plug 'haya14busa/incsearch.vim' "search higlights
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'vim-scripts/Tabmerge'
 
 Plug 'garbas/vim-snipmate' "Make snippets
 Plug 'tomtom/tlib_vim'
@@ -33,12 +38,13 @@ Plug 'tpope/vim-surround' "ys + selector + braces type
 Plug 'matze/vim-move' "move lines up and down
 Plug 'Raimondi/delimitMate' "auto completion for bracket
 Plug 'kien/ctrlp.vim' "Fuzzy search
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 "JS
 Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
 "Code check
-Plug 'elixir-lang/vim-elixir'
+Plug 'mkaravaev/vim-elixir'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'slashmili/alchemist.vim'
 Plug 'chriskempson/base16-vim'
@@ -92,7 +98,11 @@ set expandtab
 set nu
 set wmh=0
 set guifont=Monaco:h18
-colorscheme base16-default-dark
+
+colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast_dark = 'soft'
+
 set autoread
 " set ctags
 set tags=./tags;
@@ -154,5 +164,3 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
-
-#TEST

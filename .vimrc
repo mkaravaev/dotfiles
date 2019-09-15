@@ -38,7 +38,6 @@ Plug 'tpope/vim-surround' "ys + selector + braces type
 Plug 'matze/vim-move' "move lines up and down
 Plug 'Raimondi/delimitMate' "auto completion for bracket
 Plug 'kien/ctrlp.vim' "Fuzzy search
-" Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 "JS
 Plug 'pangloss/vim-javascript'

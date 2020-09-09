@@ -13,6 +13,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'mbbill/undotree'
 Plug 'digitaltoad/vim-pug'
 Plug 'hashivim/vim-terraform'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -42,12 +43,36 @@ Plug 'morhetz/gruvbox'
 "JS
 Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tasn/vim-tsx'
 "Code check
 Plug 'mkaravaev/vim-elixir'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'slashmili/alchemist.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'janko/vim-test'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'neomake/neomake'
+
+let mapleader = "\<Space>"
+"Configure vim-test
+let test#strategy = "asyncrun"
+
+"vim-test mappings
+nnoremap <leader>N :TestNearest<CR>
+nnoremap <leader>F :TestFile<CR>
+nnoremap <leader>S :TestSuite<CR>
+nnoremap <leader>L :TestLast<CR>
+nnoremap <leader>V :TestVisit<CR>
+
+"vim-ag search configuration
+"always start searching from your project root instead of the cwd 
+let g:ag_working_path_mode="r"
+"ignore tags folder for searh
+set wildignore+=tags/**
+
+"set async quickfix window when task is running
+let g:asyncrun_open = 10
+
 "Run Neomake when I save any buffer
   augroup localneomake
     autocmd! BufWritePost * Neomake
@@ -65,7 +90,6 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 "Key mappings
-let mapleader = "\<Space>"
 nnoremap <leader>w :w<CR>
 nnoremap , <C-w>
 let g:ctrlp_map = '<D-t>'
@@ -86,7 +110,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 map <leader>n :Vexplore<CR>
 
 "Command mode commands
-command JSONformat execute !python -m json.tool
+" command JSONformat execute !python -m json.tool
 
 "Settings
 set noeb vb t_vb= " Disable beep sound

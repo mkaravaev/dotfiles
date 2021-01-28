@@ -1,10 +1,12 @@
 tap "homebrew/cask"
 
-cask_args appdir: "~/Applications", require_sha: true
+cask_args appdir: "~/Applications"
 
 cask "1password"
 cask "iterm2"
 cask "dropbox"
+cask "notion"
+cask "google-cloud-sdk"
 
 tap "neovim/neovim" || true 
 brew "neovim"

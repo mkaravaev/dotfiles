@@ -15,7 +15,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'mbbill/undotree'
 Plug 'digitaltoad/vim-pug'
-Plug 'hashivim/vim-terraform'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'dag/vim-fish'
 Plug 'powerman/vim-plugin-ruscmd'
@@ -54,10 +53,18 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'neomake/neomake'
 
 let mapleader = "\<Space>"
-"Configure vim-test
-let test#strategy = "asyncrun"
 
-"vim-test mappings
+"undotree
+nnoremap <leader>U :UndotreeToggle<CR>
+
+if has("persistent_undo")
+  set undodir=$HOME/.undodir
+  set undofile
+end
+
+
+"vim-test
+let test#strategy = "asyncrun"
 nnoremap <leader>N :TestNearest<CR>
 nnoremap <leader>F :TestFile<CR>
 nnoremap <leader>S :TestSuite<CR>

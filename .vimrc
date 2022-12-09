@@ -31,8 +31,6 @@ Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets' "?
 Plug 'bling/vim-airline' 
 Plug 'tpope/vim-sensible' "?
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-commentary' "make comments(usage: gcc gc)
 Plug 'tpope/vim-surround' "ys + selector + braces type
 Plug 'matze/vim-move' "move lines up and down
@@ -44,7 +42,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tasn/vim-tsx'
 "Code check
-Plug 'mkaravaev/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'slashmili/alchemist.vim'
 Plug 'chriskempson/base16-vim'
@@ -74,7 +72,7 @@ nnoremap <leader>V :TestVisit<CR>
 "vim-ag search configuration
 "always start searching from your project root instead of the cwd 
 let g:ag_working_path_mode="r"
-"ignore tags folder for searh
+"ignore tags folder for search
 set wildignore+=tags/**
 
 "set async quickfix window when task is running
@@ -146,7 +144,8 @@ set cursorcolumn
 set title
 
 " alchemist.vim configurations
-let g:alchemist_compile_basepath = '/Users/misa/work/acheron-users/'
+
+" let g:alchemist_compile_basepath = '/Users/michail.karavaev/.asdf/shims/elixir/'
 
 " terraform configurations
 let g:terraform_fmt_on_save = 1 "format before save
@@ -182,6 +181,11 @@ vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`<
 "Higlighting for Elixir modules
 match Structure /assert_delivered_email/
 match Structure /refute_delivered_email/
+
+"Fixing vim-elixir *eex higligting
+au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs, *.ios.heex set filetype=eelixir
+au BufRead,BufNewFile mix.lock set filetype=elixir"
 
 "The Silver Searcher
 if executable('ag')

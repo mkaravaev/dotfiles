@@ -33,11 +33,19 @@ select yn in "Yes" "No"; do
           # 7. Linking Dotfiles 
           echo 'Linking Dotfiles'
 
-             # 7.1 Link .vimrc
-             mkdir ~/.config/nvim/; ln "$DOTFILES/.vimrc" ~/.config/nvim/init.vim
+          # 7.1 Link .vimrc
+          mkdir ~/.config/nvim/; ln "$DOTFILES/.vimrc" ~/.config/nvim/init.vim
 
-             # 7.2 Link .tmux.conf
-             ln "$DOTFILES/.tmux.conf" ~/.tmux.conf
+          # 7.2 Link .tmux.conf
+          ln "$DOTFILES/.tmux.conf" ~/.tmux.conf
+
+          # 8 Add fish shell
+          echo 'Add fish shell'
+          echo /usr/local/bin/fish | sudo tee -a /etc/shells
+
+          # 8 Make fish shell default
+          echo 'Set fish shell as default'
+          chsh -s /usr/local/bin/fish
 
         break;;
 

@@ -49,6 +49,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'janko/vim-test'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'neomake/neomake'
+Plug 'morhetz/gruvbox'
 
 let mapleader = "\<Space>"
 
@@ -186,6 +187,10 @@ match Structure /refute_delivered_email/
 au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
 au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs, *.ios.heex set filetype=eelixir
 au BufRead,BufNewFile mix.lock set filetype=elixir"
+
+"Cursor. Line for insert mode and bar for all the rest.
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 "The Silver Searcher
 if executable('ag')

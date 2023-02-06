@@ -1,0 +1,52 @@
+#!/bin/bash
+export DOTFILES=~/dotfiles
+
+echo "Have you copy your id_rsa into ~/.ssh? (type 1 for YES or 2 for NO)" 
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) echo "Nice let's continue"; 
+          sleep 3;
+          sourc
+          # 1. Install brew
+          echo 'installing Homebrew...'
+          /* curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh */
+
+          # 2. Install XCode deps
+          echo 'installing Xcode...'
+          /* touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress; */
+          /* softwareupdate -i -a */
+          /* rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress */
+
+          # 3. Download dotfiles
+          echo 'Downloading dotfiles...'
+
+          # 4. Install from BrewConfig
+          echo 'Insatall BrewFile deps...'
+          /* brew bundle --file=~/dotfiles/Brewfile */
+
+          # 5.Install tmux plugin manager
+          git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+          # 6.Install oh-my-fish
+          curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+
+          # 7. Linking Dotfiles 
+          echo 'Linking Dotfiles'
+
+             # 7.1 Link .vimrc
+             mkdir ~/.config/nvim/; ln "$DOTFILES/.vimrc" ~/.config/nvim/init.vim
+
+             # 7.2 Link .tmux.conf
+             ln "$DOTFILES/.tmux.conf" ~/.tmux.conf
+
+        break;;
+
+        No ) echo "You should copy you ssh first! See you."; break;;
+    esac
+done
+
+
+
+
+
+

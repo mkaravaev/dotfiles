@@ -61,3 +61,4 @@ cask "firefox"
 cask "google-cloud-sdk"
 cask "iterm2", args: { appdir: "~/Applications" }
 cask "notion"
+cask "docker"

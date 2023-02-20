@@ -29,7 +29,7 @@ Plug 'vim-scripts/Tabmerge'
 Plug 'garbas/vim-snipmate' "Make snippets
 Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets' "?
-Plug 'bling/vim-airline' 
+Plug 'bling/vim-airline'
 Plug 'tpope/vim-sensible' "?
 Plug 'tpope/vim-commentary' "make comments(usage: gcc gc)
 Plug 'tpope/vim-surround' "ys + selector + braces type
@@ -49,7 +49,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'janko/vim-test'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'neomake/neomake'
-Plug 'morhetz/gruvbox'
 
 let mapleader = "\<Space>"
 
@@ -128,10 +127,6 @@ set nu
 set wmh=0
 set guifont=Monaco:h18
 
-colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark = 'soft'
-
 set autoread
 " set ctags
 set tags=./tags;
@@ -140,8 +135,8 @@ set hlsearch
 set list
 
 "cursor
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 set title
 
 " alchemist.vim configurations

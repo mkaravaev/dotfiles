@@ -58,6 +58,6 @@ brew "derailed/k9s/k9s"
 cask "adoptopenjdk8"
 cask "firefox"
 cask "google-cloud-sdk"
-cask "iterm2", args: { appdir: "~/Applications" }
+cask rectangle
 cask "notion"
 cask "docker"

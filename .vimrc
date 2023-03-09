@@ -86,6 +86,7 @@ let g:asyncrun_open = 10
   let g:neomake_markdown_enabled_makers = []
 
 call plug#end()
+
 "CTRLP options
 set wildignore+=*/_build,*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor
 let g:ctrlp_custom_ignore = {
@@ -106,13 +107,13 @@ imap <C-e> <Esc>
 imap <C-c> <CR><Esc>O
 imap <C-S-K> <ESC>O
 imap <C-l> <right>
+
 "CTRL-t plugin mappings
 let g:ctrlp_map = '<leader>t'
 
 "Visual mode expand regions
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-map <leader>n :Vexplore<CR>
 
 "Command mode commands
 " command JSONformat execute !python -m json.tool
@@ -141,22 +142,39 @@ set title
 
 " alchemist.vim configurations
 
-" let g:alchemist_compile_basepath = '/Users/michail.karavaev/.asdf/shims/elixir/'
+" let g:alchemist_compile_basepath = '/Users/mikhail.karavaev/.asdf/shims/elixir/'
 
 " terraform configurations
 let g:terraform_fmt_on_save = 1 "format before save
 autocmd FileType terraform setlocal commentstring=#%s "comment type for tf files
 
-" netrw (like NerDTree) configs
+"Netrw (like NerDTree) configs
 let g:netrw_banner = 0
 let g:netrw_browse_split = 2
 let g:netrw_altv = 1
 let g:netrw_winsize = -28
 let g:netrw_list_hide= netrw_gitignore#Hide().'.*\.swp$'
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
+
+"Netrw toggle setup
+let g:NetrwIsOpen=0
+
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i 
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+    endif
+endfunction
+
+noremap <leader>n :call ToggleNetrw()<CR>
 
 " incsearch config
 map /  <Plug>(incsearch-forward)

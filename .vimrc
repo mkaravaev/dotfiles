@@ -55,8 +55,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tasn/vim-tsx'
 "Code check
-Plug 'elixir-editors/vim-elixir'
-Plug 'vim-erlang/vim-erlang-runtime'
+" Plug 'elixir-editors/vim-elixir'
+" Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'slashmili/alchemist.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'janko/vim-test'
@@ -75,33 +75,44 @@ if has("persistent_undo")
 end
 
 lua << EOF
-	-- `on_attach` callback will be called after a language server
-	-- instance has been attached to an open buffer with matching filetype
-	-- here we're setting key mappings for hover documentation, goto definitions, goto references, etc
-	-- you may set those key mappings based on your own preference
-	local on_attach = function(client, bufnr)
-	  local opts = { noremap=true, silent=true }
+-- `on_attach` callback will be called after a language server
+-- instance has been attached to an open buffer with matching filetype
+-- here we're setting key mappings for hover documentation, goto definitions, goto references, etc
+-- you may set those key mappings based on your own preference
+local on_attach = function(client, bufnr)
+  local opts = { noremap=true, silent=true }
 
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-	  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-	end
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+end
 
-	-- setting up the elixir language server
-	-- you have to manually specify the entrypoint cmd for elixir-ls
-	require('lspconfig').elixirls.setup {
-	  cmd = { "/Users/karavam/elixir-ls/release/language_server.sh" },
-	  on_attach = on_attach
-	}
+-- setting up the elixir language server
+-- you have to manually specify the entrypoint cmd for elixir-ls
+require('lspconfig').elixirls.setup {
+  cmd = { "/Users/karavam/elixir-ls/release/language_server.sh" },
+  on_attach = on_attach
+}
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"elixir", "heex", "eex"}, -- only install parsers for elixir and heex
+  -- ensure_installed = "all", -- install parsers for all supported languages
+  sync_install = false,
+  ignore_install = { },
+  highlight = {
+    enable = true,
+    disable = { }
+  }
+}
 EOF
 
 
@@ -213,7 +224,7 @@ function! ToggleNetrw()
         let g:NetrwIsOpen=0
     else
         let g:NetrwIsOpen=1
-        silent Lexplore
+        silent Sexplore!
     endif
 endfunction
 
@@ -236,17 +247,19 @@ map g# <Plug>(incsearch-nohl-g#
 vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`< 
 
 "Higlighting for Elixir modules
-match Structure /assert_delivered_email/
-match Structure /refute_delivered_email/
+" match Structure /assert_delivered_email/
+" match Structure /refute_delivered_email/
 
 "Fixing vim-elixir *eex higligting
-au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
-au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs, *.ios.heex set filetype=eelixir
-au BufRead,BufNewFile mix.lock set filetype=elixir"
+" au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+" au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs, *.ios.heex set filetype=eelixir
+" au BufRead,BufNewFile mix.lock set filetype=elixir"
 
 "Cursor. Line for insert mode and bar for all the rest.
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
+
+let g:snipMate = { 'snippet_version' : 1 }
 
 "The Silver Searcher
 if executable('ag')

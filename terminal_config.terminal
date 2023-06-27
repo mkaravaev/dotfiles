@@ -155,6 +155,8 @@
 	cqIWGFhOU09iamVjdAgRGiQpMjdJTFFTV11kand+qKqssbzFzdAAAAAAAAABAQAAAAAA
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
+	<key>CursorBlink</key>
+	<false/>
 	<key>CursorColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
@@ -165,7 +167,22 @@
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
 	<key>CursorType</key>
-	<integer>2</integer>
+	<integer>0</integer>
+	<key>Font</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNALgAAAAAAABAQgAKAA18QGkpl
+	dEJyYWluc01vbm9OTC1FeHRyYUxpZ2h00hcYGRpaJGNsYXNzbmFtZVgkY2xhc3Nlc1ZO
+	U0ZvbnSiGRtYTlNPYmplY3QIERokKTI3SUxRU1heZ253foWOkJKUsbbBytHUAAAAAAAA
+	AQEAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAN0=
+	</data>
+	<key>FontAntialias</key>
+	<true/>
+	<key>FontHeightSpacing</key>
+	<real>1</real>
+	<key>FontWidthSpacing</key>
+	<real>1</real>
 	<key>ProfileCurrentVersion</key>
 	<real>2.0699999999999998</real>
 	<key>SelectionColor</key>
@@ -198,7 +215,7 @@
 	<key>columnCount</key>
 	<integer>90</integer>
 	<key>name</key>
-	<string>Relaxed</string>
+	<string>terminal_config</string>
 	<key>rowCount</key>
 	<integer>50</integer>
 	<key>type</key>

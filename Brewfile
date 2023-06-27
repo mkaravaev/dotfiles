@@ -58,6 +58,6 @@ brew "derailed/k9s/k9s"
 cask "adoptopenjdk8"
 cask "firefox"
 cask "google-cloud-sdk"
-cask rectangle
+cask "rectangle"
 cask "notion"
 cask "docker"

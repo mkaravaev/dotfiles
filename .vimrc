@@ -53,6 +53,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'janko/vim-test'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'neomake/neomake'
+Plug 'zivyangll/git-blame.vim'
 
 call plug#end()
 
@@ -116,6 +117,9 @@ nnoremap <leader>F :TestFile<CR>
 nnoremap <leader>S :TestSuite<CR>
 nnoremap <leader>L :TestLast<CR>
 nnoremap <leader>V :TestVisit<CR>
+
+"git-blame
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 "vim-ag search configuration
 "always start searching from your project root instead of the cwd 

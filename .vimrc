@@ -5,12 +5,6 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" if exists('+termguicolors')
-  " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" set termguicolors
-" endif
-
 call plug#begin('~/.vim/plugged')
 
 " Install LSP
@@ -54,14 +48,12 @@ Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tasn/vim-tsx'
-"Code check
-" Plug 'elixir-editors/vim-elixir'
-" Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'slashmili/alchemist.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'janko/vim-test'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'neomake/neomake'
+
 call plug#end()
 
 let mapleader = "\<Space>"
@@ -99,7 +91,8 @@ end
 -- setting up the elixir language server
 -- you have to manually specify the entrypoint cmd for elixir-ls
 require('lspconfig').elixirls.setup {
-  cmd = { "/Users/karavam/elixir-ls/release/language_server.sh" },
+  cmd = { "/Users/karavam/elixir-ls/language_server.sh" },
+
   on_attach = on_attach
 }
 
@@ -140,6 +133,11 @@ let g:asyncrun_open = 10
   " Don't tell me to use smartquotes in markdown ok?
   let g:neomake_markdown_enabled_makers = []
 
+"Set wrap (break line if it's too long) in quickfix windows
+augroup quickfix
+    autocmd!
+    autocmd FileType qf setlocal wrap
+augroup END
 
 "CTRLP options
 set wildignore+=*/_build,*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor
@@ -194,10 +192,6 @@ set list
 " set cursorcolumn
 set title
 
-" alchemist.vim configurations
-
-" let g:alchemist_compile_basepath = '/Users/mikhail.karavaev/.asdf/shims/elixir/'
-
 " terraform configurations
 let g:terraform_fmt_on_save = 1 "format before save
 autocmd FileType terraform setlocal commentstring=#%s "comment type for tf files
@@ -245,15 +239,6 @@ map g# <Plug>(incsearch-nohl-g#
 
 "folding all except selected
 vnoremap <Leader>za <Esc>`<kzfgg`>jzfG`< 
-
-"Higlighting for Elixir modules
-" match Structure /assert_delivered_email/
-" match Structure /refute_delivered_email/
-
-"Fixing vim-elixir *eex higligting
-" au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
-" au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs, *.ios.heex set filetype=eelixir
-" au BufRead,BufNewFile mix.lock set filetype=elixir"
 
 "Cursor. Line for insert mode and bar for all the rest.
 let &t_SI = "\e[6 q"

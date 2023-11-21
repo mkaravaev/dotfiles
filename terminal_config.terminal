@@ -155,6 +155,8 @@
 	cqIWGFhOU09iamVjdAgRGiQpMjdJTFFTV11kand+qKqssbzFzdAAAAAAAAABAQAAAAAA
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
+	<key>CommandString</key>
+	<string>tmux attach || exec tmux new-session</string>
 	<key>CursorBlink</key>
 	<false/>
 	<key>CursorColor</key>
@@ -172,10 +174,10 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
 	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
-	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNALgAAAAAAABAQgAKAA18QGkpl
-	dEJyYWluc01vbm9OTC1FeHRyYUxpZ2h00hcYGRpaJGNsYXNzbmFtZVgkY2xhc3Nlc1ZO
-	U0ZvbnSiGRtYTlNPYmplY3QIERokKTI3SUxRU1heZ253foWOkJKUsbbBytHUAAAAAAAA
-	AQEAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAN0=
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAJgAAAAAAABAQgAKAA1xTRk1v
+	bm8tTGlnaHTSFxgZGlokY2xhc3NuYW1lWCRjbGFzc2VzVk5TRm9udKIZG1hOU09iamVj
+	dAgRGiQpMjdJTFFTWF5nbnd+hY6QkpShprG6wcQAAAAAAAABAQAAAAAAAAAcAAAAAAAA
+	AAAAAAAAAAAAzQ==
 	</data>
 	<key>FontAntialias</key>
 	<true/>
@@ -185,6 +187,8 @@
 	<real>1</real>
 	<key>ProfileCurrentVersion</key>
 	<real>2.0699999999999998</real>
+	<key>RunCommandAsShell</key>
+	<false/>
 	<key>SelectionColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
